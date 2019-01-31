@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flogging.Core", "Flogging.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FloggingConsole", "FloggingConsole\FloggingConsole.csproj", "{D281145F-1F92-4D94-919E-834DACE3796A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flogging.Data", "Flogging.Data\Flogging.Data.csproj", "{725230F7-FBE8-49B8-A50F-BAB18CBD865C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D281145F-1F92-4D94-919E-834DACE3796A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D281145F-1F92-4D94-919E-834DACE3796A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D281145F-1F92-4D94-919E-834DACE3796A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{725230F7-FBE8-49B8-A50F-BAB18CBD865C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{725230F7-FBE8-49B8-A50F-BAB18CBD865C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{725230F7-FBE8-49B8-A50F-BAB18CBD865C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{725230F7-FBE8-49B8-A50F-BAB18CBD865C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
