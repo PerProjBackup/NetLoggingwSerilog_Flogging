@@ -31,7 +31,7 @@ namespace Flogging.Core
     // EVERYTHING ELSE
     public long? ElapsedMilliseconds { get; set; } // only for performance entries
     public Exception Exception { get; set; } // the exception for error logging
-    public int CorrelationId { get; set; } // exception shielding from server to client
+    public string CorrelationId { get; set; } // exception shielding from server to client
     public Dictionary<string, object> AdditionalInfo { get; set; } // catch-all for anything else
 
 

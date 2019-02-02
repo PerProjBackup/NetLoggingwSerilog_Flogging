@@ -52,12 +52,15 @@
   <ItemGroup>
     <Compile Include="CustomDapper\DapperExtensions.cs" />
     <Compile Include="CustomAdo\Sproc.cs" />
-    <Compile Include="CustomEntityFramework\FloggerInterceptor.cs" />
+    <Compile Include="CustomEntityFramework\FloggerEfInterceptor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

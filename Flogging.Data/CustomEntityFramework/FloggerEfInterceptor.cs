@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Flogging.Data.CustomEntityFramework
 {
-  public class FloggerInterceptor : IDbCommandInterceptor
+  public class FloggerEFInterceptor : IDbCommandInterceptor
   {
     private Exception WrapEntityFrameworkException(DbCommand command, Exception ex)
     {

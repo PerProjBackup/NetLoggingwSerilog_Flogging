@@ -20,15 +20,14 @@ namespace FloggingConsole.Models
   public class CustomerDbContext : DbContext
   {
     public CustomerDbContext() : base("DefaultConnection")
-    { DbInterception.Add(new FloggerInterceptor()); }
+    { DbInterception.Add(new FloggerEFInterceptor()); }
 
     public DbSet<Customer> Customers { get; set; }
 
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
       modelBuilder.Entity<Customer>()
-                  .Property(c => c.Name)
-                  .HasMaxLength(10);
+         .Property(c => c.Name).HasMaxLength(10);
     }
   }
 }
