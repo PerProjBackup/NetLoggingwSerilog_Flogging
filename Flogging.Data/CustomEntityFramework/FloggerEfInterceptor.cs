@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Flogging.Data.CustomEntityFramework
+namespace Flogging.Data.Entity
 {
   public class FloggerEFInterceptor : IDbCommandInterceptor
   {

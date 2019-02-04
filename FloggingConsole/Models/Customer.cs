@@ -1,4 +1,4 @@
-﻿using Flogging.Data.CustomEntityFramework;
+﻿using Flogging.Data.Entity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

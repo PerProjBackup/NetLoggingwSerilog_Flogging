@@ -53,6 +53,10 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Flogging.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Flogging.Data\bin\Debug\Flogging.Data.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.5\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
     </Reference>
@@ -239,10 +243,6 @@
     <ProjectReference Include="..\Flogging.Core\Flogging.Core.csproj">
       <Project>{0cb04bf9-a3d2-4c50-a4bb-2c23c2318c77}</Project>
       <Name>Flogging.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Flogging.Data\Flogging.Data.csproj">
-      <Project>{725230f7-fbe8-49b8-a50f-bab18cbd865c}</Project>
-      <Name>Flogging.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Flogging.Web\Flogging.Web.csproj">
       <Project>{29df90ff-4cf8-462d-9567-c7c5c66524d3}</Project>

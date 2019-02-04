@@ -7,6 +7,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Http.Controllers;
 
 namespace Flogging.Web
 {
@@ -28,7 +29,7 @@ namespace Flogging.Web
         CorrelationId = HttpContext.Current.Session.SessionID,
         Message = activityName, AdditionalInfo = webInfo };
 
-      Flogger.WriteUseage(usageInfo);
+      Flogger.WriteUsage(usageInfo);
     }
 
     public static void LogWebDiagnostic(string product, string layer, string message,
@@ -83,7 +84,7 @@ namespace Flogging.Web
       var data = new Dictionary<string, object>();
 
       GetRequestData(data, out location);
-      GetUserData(data, out userId, out userName);
+      GetUserData(data, ClaimsPrincipal.Current, out userId, out userName);
       GetSessionData(data);
       // got cookies?
 
@@ -123,10 +124,10 @@ namespace Flogging.Web
           request.Browser.MinorVersion + ")";       }
     }
 
-    private static void GetUserData(Dictionary<string, object> data, out string userId, out string userName)
+    internal static void GetUserData(Dictionary<string, object> data, ClaimsPrincipal user, out string userId, out string userName)
     {
       userId = userName = "";
-      var user = ClaimsPrincipal.Current;
+      //var user = ClaimsPrincipal.Current;
       if (user != null) {
         var i = 1; // i included in dictionary key to ensure uniqueness
         foreach (var claim in user.Claims) {
@@ -134,6 +135,42 @@ namespace Flogging.Web
           else if (claim.Type == ClaimTypes.Name) userName = claim.Value;
           else // example dictionary key: UserClaim-4-role
             data.Add(string.Format($"UserClaim-{i++}-{claim.Type}"), claim.Value); } }
+    }
+
+    internal static void GetLocationForApiCall(HttpRequestContext requestContext,
+          Dictionary<string, object> dict, out string location)
+    {
+      // example route template: api/{controoler}/{id}
+      var routeTemplate = requestContext.RouteData.Route.RouteTemplate;
+
+      var method = requestContext.Url.Request.Method; // GET, POST, etc.
+
+      foreach (var key in requestContext.RouteData.Values.Keys)
+      {
+        var value = requestContext.RouteData.Values[key].ToString();
+        if (Int64.TryParse(value, out long numeric)) // C# 7 inline declaration
+        { // must be numeric part of route
+                dict.Add($"Route-{key}", value);
+        } else routeTemplate = routeTemplate.Replace("{" + key + "}", value);
+      }
+
+      location = $"{method} {routeTemplate}";
+
+      var qs = HttpUtility.ParseQueryString(requestContext.Url.Request.RequestUri.Query);
+      var i = 0;
+      foreach (string key in qs.Keys)
+      {
+        var newKey = string.Format($"q-{i++}-{key}");
+        if (!dict.ContainsKey(newKey)) dict.Add(newKey, qs[key]);
+      }
+
+      var referrer = requestContext.Url.Request.Headers.Referrer;
+      if (referrer != null)
+      {
+        var source = referrer.OriginalString;
+        if (source.ToLower().Contains("swagger")) source = "Swagger";
+        if (!dict.ContainsKey("Referrer")) dict.Add("Referrer", source);
+      }
     }
 
     private static void GetSessionData(Dictionary<string, object> data)

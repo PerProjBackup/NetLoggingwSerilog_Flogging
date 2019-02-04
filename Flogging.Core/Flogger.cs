@@ -13,16 +13,16 @@ namespace Flogging.Core
   public static class Flogger
   {
     private static readonly ILogger _perfLogger;
-    private static readonly ILogger _useageLogger;
+    private static readonly ILogger _usageLogger;
     private static readonly ILogger _errorLogger;
     private static readonly ILogger _diagnosticsLogger;
 
     static Flogger()
     {
-      var path = @"D:\DevProj\Trng\NetLgngSeriDoneRight\Logs\";
+      var path = @"D:\DevProj\Trng\NetLgngSeriDoneRight\Logs\"; // ~\..\Logs\";   //
       _perfLogger = new LoggerConfiguration()
         .WriteTo.File(path: path + "perf.txt").CreateLogger();
-      _useageLogger = new LoggerConfiguration()
+      _usageLogger = new LoggerConfiguration()
         .WriteTo.File(path: path + "usage.txt").CreateLogger();
       _errorLogger = new LoggerConfiguration()
         .WriteTo.File(path: path + "error.txt").CreateLogger();
@@ -32,8 +32,10 @@ namespace Flogging.Core
 
     public static void WritePerf(FlogDetail infoToLog)
     { _perfLogger.Write(LogEventLevel.Information, "{@FlogDetail}", infoToLog); }
-    public static void WriteUseage(FlogDetail infoToLog)
-    { _useageLogger.Write(LogEventLevel.Information, "{@FlogDetail}", infoToLog); }
+
+    public static void WriteUsage(FlogDetail infoToLog)
+    { _usageLogger.Write(LogEventLevel.Information, "{@FlogDetail}", infoToLog); }
+
     public static void WriteError(FlogDetail infoToLog)
     {
       if (infoToLog.Exception != null) {
@@ -41,6 +43,7 @@ namespace Flogging.Core
         infoToLog.Location = string.IsNullOrEmpty(procName) ? infoToLog.Location : procName;
         infoToLog.Message = GetMessageFromException(infoToLog.Exception); }
       _errorLogger.Write(LogEventLevel.Information, "{@FlogDetail}", infoToLog); }
+
     public static void WriteDiagnostic(FlogDetail infoToLog)
     {
       var writeDiagnostics = Convert.ToBoolean(ConfigurationManager.AppSettings["EnableDiagnostics"]);

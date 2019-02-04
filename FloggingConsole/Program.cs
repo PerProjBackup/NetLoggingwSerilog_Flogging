@@ -74,7 +74,7 @@ namespace FloggingConsole
         Flogger.WriteError(efd); }
                      
       fd = GetFlogDetail("used flogging console", null);
-      Flogger.WriteUseage(fd);
+      Flogger.WriteUsage(fd);
 
       fd = GetFlogDetail("stopping app", null);
       Flogger.WriteDiagnostic(fd);
