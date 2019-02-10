@@ -29,8 +29,8 @@ namespace Flogging.Web.Services
 
       context.Result = new TextPlainErrorResult {
         Request = context.ExceptionContext.Request,
-        Content = "Opps! Sorry! Something went wrong.  " +
-                  "Please contact our support team se we can try to fix it. " +
+        Content = "Oops! Sorry! Something went wrong.  " +
+                  "Please contact our support team so we can try to fix it. " +
                   errorInfo };
 
     }
@@ -44,6 +44,12 @@ namespace Flogging.Web.Services
       {
         var response = new HttpResponseMessage(HttpStatusCode.InternalServerError) {
           Content = new StringContent(Content), RequestMessage = Request };
+
+        var referrer = Request.Headers.Referrer;
+        if (referrer != null) response.Headers
+            // .Add("Access-Control-Allow-Origin", referrer.ToString());
+            .Add("Access-Contro-Allow-Origin", referrer.GetLeftPart(UriPartial.Authority));
+
         return Task.FromResult(response);
       }
     }

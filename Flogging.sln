@@ -11,13 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flogging.Data", "Flogging.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flogging.Web", "Flogging.Web\Flogging.Web.csproj", "{29DF90FF-4CF8-462D-9567-C7C5C66524D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoForms", "TodoForms\TodoForms.csproj", "{625547B7-5757-495F-8850-75C22304B75F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoDataAccess", "TodoDataAccess\TodoDataAccess.csproj", "{FCE51DB7-A4BC-4321-B695-59D72E2C31EE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoMvc", "TodoMvc\TodoMvc.csproj", "{755FA52F-2D9D-4FB5-BD54-A673465BC477}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoWebAPI", "ToDoWebAPI\ToDoWebAPI.csproj", "{8EEF2044-76A1-4EA8-9D80-1034A1FEA83E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FloggingAPI", "FloggingAPI\FloggingAPI.csproj", "{B931F686-C7D1-47BF-8B5F-9D64915317FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,22 +35,10 @@ Global
 		{29DF90FF-4CF8-462D-9567-C7C5C66524D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29DF90FF-4CF8-462D-9567-C7C5C66524D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29DF90FF-4CF8-462D-9567-C7C5C66524D3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{625547B7-5757-495F-8850-75C22304B75F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{625547B7-5757-495F-8850-75C22304B75F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{625547B7-5757-495F-8850-75C22304B75F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{625547B7-5757-495F-8850-75C22304B75F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FCE51DB7-A4BC-4321-B695-59D72E2C31EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FCE51DB7-A4BC-4321-B695-59D72E2C31EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FCE51DB7-A4BC-4321-B695-59D72E2C31EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FCE51DB7-A4BC-4321-B695-59D72E2C31EE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{755FA52F-2D9D-4FB5-BD54-A673465BC477}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{755FA52F-2D9D-4FB5-BD54-A673465BC477}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{755FA52F-2D9D-4FB5-BD54-A673465BC477}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{755FA52F-2D9D-4FB5-BD54-A673465BC477}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8EEF2044-76A1-4EA8-9D80-1034A1FEA83E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8EEF2044-76A1-4EA8-9D80-1034A1FEA83E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8EEF2044-76A1-4EA8-9D80-1034A1FEA83E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8EEF2044-76A1-4EA8-9D80-1034A1FEA83E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B931F686-C7D1-47BF-8B5F-9D64915317FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B931F686-C7D1-47BF-8B5F-9D64915317FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B931F686-C7D1-47BF-8B5F-9D64915317FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B931F686-C7D1-47BF-8B5F-9D64915317FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

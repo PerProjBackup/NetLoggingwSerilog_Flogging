@@ -16,10 +16,12 @@ namespace Flogging.Core
     private static readonly ILogger _usageLogger;
     private static readonly ILogger _errorLogger;
     private static readonly ILogger _diagnosticsLogger;
+    private static readonly string path =
+      @"D:\DevProj\Trng\NetLgngSeriDoneRight\Logs\";
 
     static Flogger()
     {
-      var path = @"D:\DevProj\Trng\NetLgngSeriDoneRight\Logs\"; // ~\..\Logs\";   //
+     
       _perfLogger = new LoggerConfiguration()
         .WriteTo.File(path: path + "perf.txt").CreateLogger();
       _usageLogger = new LoggerConfiguration()
