@@ -1,0 +1,86 @@
+﻿@page
+@model Rover.Pages.RevisionsModel
+@{
+    ViewData["Title"] = "Revisions";
+}
+
+<h2>Revisions</h2>
+
+<style>
+    tr > td {
+        padding-right: 20px;
+        vertical-align: top;
+    }
+</style>
+
+<p>This page will show the overall history of changes made to this web application.</p>
+
+<ul class="list-group">
+    <li class="list-group-item">
+        <span class="badge">03-30-2018</span>
+        <table>
+            <tr>
+                <td><span class="label label-warning">FIXED</span></td>
+                <td>Fixed issue where selecting items in the lists would persist (and not be valid) when different envs.</td>
+            </tr>
+        </table>
+    </li>
+    <li class="list-group-item">
+        <span class="badge">03-12-2018</span>
+        <table>
+            <tr>
+                <td><span class="label label-primary">CHANGED</span></td>
+                <td>Updated server cheatsheet for PSS machine names.</td>
+            </tr>
+        </table>
+    </li>
+    <li class="list-group-item">
+        <span class="badge">02-23-2018</span>
+        <table>
+            <tr>
+                <td><span class="label label-success">NEW</span></td>
+                <td>Added support for PRD and NCS log viewing (via replication). Thanks, Chuck Felber!</td>
+            </tr>
+            <tr>
+                <td><span class="label label-primary">CHANGED</span></td>
+                <td>Modified rdp connections on server cheatsheet to use FQDN instead of NetBIOS name.</td>
+            </tr>
+        </table>
+    </li>
+    <li class="list-group-item">
+        <span class="badge">02-14-2018</span>
+        <table>
+            <tr>
+                <td><span class="label label-primary">CHANGED</span></td>
+                <td>Cleaned up server cheatsheet; fixed initial display of alerts.</td>
+            </tr>
+        </table>
+    </li>
+    <li class="list-group-item">
+        <span class="badge">02-08-2018</span>
+        <table>
+            <tr>
+                <td><span class="label label-success">NEW</span></td>
+                <td>Added the Server Cheatsheet with RDP links to the servers.</td>
+            </tr>
+            <tr>
+                <td><span class="label label-primary">CHANGED</span></td>
+                <td>Moved the Environment chooser into the criteria header to save space.</td>
+            </tr>
+        </table>
+    </li>
+    <li class="list-group-item">
+        <span class="badge">01-18-2018</span>
+        <table>
+            <tr>
+                <td><span class="label label-success">NEW</span></td>
+                <td>Added this revision history page.</td>
+            </tr>
+            <tr>
+                <td><span class="label label-primary">CHANGED</span></td>
+                <td>Added lots of environments into the Log Viewer environment chooser.</td>
+            </tr>
+        </table>
+    </li>
+</ul>
+
