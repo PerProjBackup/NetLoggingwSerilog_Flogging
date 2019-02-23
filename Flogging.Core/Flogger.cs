@@ -28,21 +28,39 @@ namespace Flogging.Core
       //    -- also needs to be included in any apps that
       //          directly ref Flogging.Core for writing logs!
       // ASP.NET WebForms, ASP.NET MVC, WebAPI (todos)
-      //
+
+      // For Elasticsearch, add Serilog.Sinks.Elasticsearch
+      //  update direct ref assemblies shown above.
+      // sink details: https://github.com/serilog/serilog-sinks-elasticsearch
+
       // Sink details: https://github.com/serilog/serilog-sinks-mssqlserver  
-      var connStr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+
+      //var connStr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+
       _perfLogger = new LoggerConfiguration()
-        .WriteTo.MSSqlServer(connStr, "PerfLogs", autoCreateSqlTable: true, //File(path: path + "perf.txt")
-          columnOptions: GetSqlColumnOptions(), batchPostingLimit: 1).CreateLogger(); // default batchPostingLimit: is 50, setting low for development
+        //.WriteTo.File(path: path + "perf.txt")
+        //.WriteTo.MSSqlServer(connStr, "PerfLogs", autoCreateSqlTable: true, 
+        //  columnOptions: GetSqlColumnOptions(), batchPostingLimit: 1).CreateLogger(); // default batchPostingLimit: is 50, setting low for development
+        .WriteTo.Elasticsearch("http://192.168.99.100:9200",
+            indexFormat: "perf-{0:yyyy.MM.dd}", inlineFields: true).CreateLogger();
       _usageLogger = new LoggerConfiguration()
-        .WriteTo.MSSqlServer(connStr, "UsageLogs", autoCreateSqlTable: true, //.File(path: path + "usage.txt")
-          columnOptions: GetSqlColumnOptions(), batchPostingLimit: 1).CreateLogger();
+        //.WriteTo.File(path: path + "usage.txt")
+        //.WriteTo.MSSqlServer(connStr, "UsageLogs", autoCreateSqlTable: true, 
+        //  columnOptions: GetSqlColumnOptions(), batchPostingLimit: 1).CreateLogger();
+        .WriteTo.Elasticsearch("http://192.168.99.100:9200",
+            indexFormat: "usage-{0:yyyy.MM.dd}", inlineFields: true).CreateLogger();
       _errorLogger = new LoggerConfiguration()
-        .WriteTo.MSSqlServer(connStr, "ErrorLogs", autoCreateSqlTable: true, //.File(path: path + "error.txt")
-          columnOptions: GetSqlColumnOptions(), batchPostingLimit: 1).CreateLogger();
+        //.WriteTo.File(path: path + "error.txt")
+        //.WriteTo.MSSqlServer(connStr, "ErrorLogs", autoCreateSqlTable: true,
+        //  columnOptions: GetSqlColumnOptions(), batchPostingLimit: 1).CreateLogger();
+        .WriteTo.Elasticsearch("http://192.168.99.100:9200",
+            indexFormat: "error-{0:yyyy.MM.dd}", inlineFields: true).CreateLogger();
       _diagnosticsLogger = new LoggerConfiguration()
-        .WriteTo.MSSqlServer(connStr, "DiagnosticLogs", autoCreateSqlTable: true, //.File(path: path + "diagnostic.txt")
-          columnOptions: GetSqlColumnOptions(), batchPostingLimit: 1).CreateLogger();
+        //.WriteTo.File(path: path + "diagnostic.txt")
+        //.WriteTo.MSSqlServer(connStr, "DiagnosticLogs", autoCreateSqlTable: true,
+        //  columnOptions: GetSqlColumnOptions(), batchPostingLimit: 1).CreateLogger();
+        .WriteTo.Elasticsearch("http://192.168.99.100:9200",
+            indexFormat: "diagnostic-{0:yyyy.MM.dd}", inlineFields: true).CreateLogger();
     }
 
     private static ColumnOptions GetSqlColumnOptions()
